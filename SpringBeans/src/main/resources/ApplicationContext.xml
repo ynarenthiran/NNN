@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- !DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- singleton - default prototype -->
+
+	<bean id="XMLBean_Singleton" class="com.basics.beans.xml.XMLBean"
+		scope="singleton"></bean>
+
+	<bean id="XMLBean" class="com.basics.beans.xml.XMLBean" scope="prototype"></bean>
+	<bean id="XMLBeanSetter" class="com.basics.beans.xml.XMLBeanSetter"
+		scope="prototype">
+		<property name="xmlBean" ref="XMLBean"></property>
+	</bean>
+
+	<bean id="XMLBeanSetter_Default" class="com.basics.beans.xml.XMLBeanSetter">
+		<property name="xmlBean" ref="XMLBean_Singleton"></property>
+		<property name="name" value="WelcomeMessage"></property>
+		<property name="age" value="12"></property>
+	</bean>
+
+	<bean id="XMLBeanSetter_Default1" class="com.basics.beans.xml.XMLBeanSetter">
+		<property name="xmlBean" ref="XMLBean"></property>
+	</bean>
+
+	<bean id="XMLBeanConstructor" class="com.basics.beans.xml.XMLBeanConstructor">
+		<constructor-arg ref="XMLBean_Singleton"></constructor-arg>
+	</bean>
+
+	<bean id="XMLBeanConstructor_1" class="com.basics.beans.xml.XMLBeanConstructor">
+		<constructor-arg ref="XMLBean_Singleton"></constructor-arg>
+		<constructor-arg value="WelcomeMessage X"></constructor-arg>
+		<constructor-arg value="40"></constructor-arg>
+	</bean>
+
+	<bean id="XMLBeanConstructor_2" class="com.basics.beans.xml.XMLBeanConstructor">
+		<constructor-arg value="WelcomeMessage X"></constructor-arg>
+		<constructor-arg value="121212"></constructor-arg>
+		<constructor-arg ref="XMLBean_Singleton"></constructor-arg>
+	</bean>
+	<bean id="XMLBeanConstructor_3" class="com.basics.beans.xml.XMLBeanConstructor">
+		<constructor-arg ref="XMLBean_Singleton"></constructor-arg>
+		<constructor-arg value="211"></constructor-arg>
+		<constructor-arg value="99"></constructor-arg>
+		<constructor-arg value="WelcomeMessage X"></constructor-arg>
+	</bean>
+	<bean id="XMLBeanConstructor_4" class="com.basics.beans.xml.XMLBeanConstructor">
+		<constructor-arg index="1" value="49999"></constructor-arg>
+		<constructor-arg ref="XMLBean_Singleton"></constructor-arg>
+		<constructor-arg index="2" value="40000"></constructor-arg>
+		<constructor-arg value="WelcomeMessage X"></constructor-arg>
+	</bean>
+</beans>
